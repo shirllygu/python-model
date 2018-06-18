@@ -209,6 +209,6 @@ Step III. Choosing the best model
 We can observe that the best performing model is the LDA baed on the accuracy. We will use this model to against the tet data set. We can visually compare the model performance plotting the auc as well.
 
 
-
+![alt text](https://github.com/shirllygu/python-model/blob/master/Screen%20Shot%202018-06-18%20at%204.17.11%20PM.png)
 
 ```
