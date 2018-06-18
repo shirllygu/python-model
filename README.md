@@ -1,3 +1,37 @@
+# Introduction
+
+The task is to predict female head of household using a list of interest elements on US file.
+All interest elements taking the form of binary 1/0.
+We evaluated the performance of different types of machine learning classification models with the same dataset.
+list of elements were listed as below, pre-model variable conversion has been done.
+```
+IB8688    Gender of head of Household ### value of "F" on variable to be predicted
+IB6540	Lifestyles, Interests and Passions - Novelty - C
+IB6312	Donation/Contribution
+IB7819	Gaming - Lottery
+IB7795	Investments - Stocks / Bonds
+IB8653	Online Purchasing Indicator
+IB8615	Mail Order Buyer
+IB8647	Vehicle - Known Owned Number
+IB7809	Environmental Issues
+IB7720	Fashion
+IB7739	Cooking - General
+IB7770	Health/Medical
+IB7823	Outdoors Grouping
+IB7820	Gaming - Casino
+IB7768	Movies at Home
+IB7765	TV - Cable
+IB8630	PC Owner
+IB8257	Spectator Sports - TV Sports
+IB7759	Games - Board Games / Puzzles
+IB7822	Sports Grouping
+IB7788	Collectibles - General
+IB8272	DIY Living
+IB7732	Arts
+```
+
+
+
 # Loading libraries
 Firstly, we will load all the required libraries for data manipulation, visualization and machine learning.
 
@@ -42,33 +76,8 @@ pd.set_option('display.max_columns', 500)     # Make sure we can see all of the 
 pd.set_option('display.max_rows', 20) 
 data.describe()
 ```
-IB8688    Gender of head of Household ### value of "F" on variable to be predicted
-IB6540	Lifestyles, Interests and Passions - Novelty - C
-IB6312	Donation/Contribution
-IB7819	Gaming - Lottery
-IB7795	Investments - Stocks / Bonds
-IB8653	Online Purchasing Indicator
-IB8615	Mail Order Buyer
-IB8647	Vehicle - Known Owned Number
-IB7809	Environmental Issues
-IB7720	Fashion
-IB7739	Cooking - General
-IB7770	Health/Medical
-IB7823	Outdoors Grouping
-IB7820	Gaming - Casino
-IB7768	Movies at Home
-IB7765	TV - Cable
-IB8630	PC Owner
-IB8257	Spectator Sports - TV Sports
-IB7759	Games - Board Games / Puzzles
-IB7822	Sports Grouping
-IB7788	Collectibles - General
-IB8272	DIY Living
-IB7732	Arts
+
 ```
-
-
-```html
           N_V8688_F      n_ib6540      n_ib6312      n_ib7819      n_ib7795  \
 count  7.966937e+06  7.966937e+06  7.966937e+06  7.966937e+06  7.966937e+06   
 mean   4.107950e-01  4.922670e-02  1.168849e-01  2.659981e-02  9.062467e-02   
