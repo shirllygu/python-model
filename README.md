@@ -114,18 +114,101 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_
 Step ii. Building Models
 We will build 5 models using our train data.
 
-Logistic Regression (LR)
+## Logistic Regression (LR)
+```python
+lr = LogisticRegression()
+lr.fit(X_train,Y_train)
+predictions_lr = lr.predict(X_test)
+print("LOGISTIC REGRESSION")
+print(accuracy_score(Y_test,predictions_lr))
+print(classification_report(Y_test,predictions_lr))
+Y_pred_proba_lr = lr.predict_proba(X_test)[::,1]
+fpr_lr, tpr_lr, _ =roc_curve(Y_test,  Y_pred_proba_lr)
+auc_lr = roc_auc_score(Y_test,Y_pred_proba_lr)
 
-Linear Discriminant Analysis (LDA)
+```
+## Linear Discriminant Analysis (LDA)
+```python
+lda = LinearDiscriminantAnalysis()
+lda.fit(X_train,Y_train)
+predictions_lda = lda.predict(X_test)
+print("Linear Discriminant Analysis")
+print(accuracy_score(Y_test,predictions_lda))
+print(classification_report(Y_test, predictions_lda))
 
-Extreme Gradient Boosting (XGB)
+Y_pred_proba_lda = lda.predict_proba(X_test)[::,1]
+fpr_lda, tpr_lda, _ =roc_curve(Y_test,  Y_pred_proba_lda)
+auc_lda = roc_auc_score(Y_test,Y_pred_proba_lda)
+```
+## Extreme Gradient Boosting (XGB)
+```python
 
-Classification and Regression Trees (CART)
+xgb = xgb.XGBClassifier(objective='binary:logistic', n_estimators=10, seed=123)
+xgb.fit(X_train,Y_train)
+predictions_xgb = xgb.predict(X_test)
+print("xgboost")
+print(accuracy_score(Y_test,predictions_xgb))
+print(classification_report(Y_test,predictions_xgb))
+Y_pred_proba_xgb = xgb.predict_proba(X_test)[::,1]
+fpr_xgb, tpr_xgb, _ =roc_curve(Y_test,  Y_pred_proba_xgb)
+auc_xgb = roc_auc_score(Y_test,Y_pred_proba_xgb)
+```
 
-Gaussian Naive Bayes (NB)
+## Classification and Regression Trees (CART)
+```python
 
-Neutral Network:Multi-Layer Perceptron Classifier model(NN)
 
-Support Vector Machines (SVM)
+cart =  DecisionTreeClassifier()
+cart.fit(X_train,Y_train)
+predictions_cart = cart.predict(X_test)
+print("DECISION TREE")
+print(accuracy_score(Y_test,predictions_cart))
+print(classification_report(Y_test,predictions_cart))
+Y_pred_proba_cart = cart.predict_proba(X_test)[::,1]
+fpr_cart, tpr_cart, _ =roc_curve(Y_test,  Y_pred_proba_cart)
+auc_cart = roc_auc_score(Y_test,Y_pred_proba_cart)
 
-K-Nearest Neighbors (KNN)
+```
+## Gaussian Naive Bayes (NB)
+```python
+nb = GaussianNB()
+nb.fit(X_train,Y_train)
+predictions_nb = nb.predict(X_test)
+print("GaussianNB")
+print(accuracy_score(Y_test, predictions_nb))
+print(classification_report(Y_test, predictions_nb))
+print(confusion_matrix(Y_test,predictions_nb))
+Y_pred_proba_nb = nb.predict_proba(X_test)[::,1]
+fpr_nb, tpr_nb, _ =roc_curve(Y_test,  Y_pred_proba_nb)
+auc_nb = roc_auc_score(Y_test,Y_pred_proba_nb)
+```
+
+## Neutral Network:Multi-Layer Perceptron Classifier model(NN)
+```python
+
+
+nn=MLPClassifier()
+nn.fit(X_train,Y_train)
+predictions_nn = nn.predict(X_test)
+print("neural_network")
+print(accuracy_score(Y_test, predictions_nn))
+print(classification_report(Y_test, predictions_nn))
+print(confusion_matrix(Y_test,predictions_nn))
+Y_pred_proba_nn = nn.predict_proba(X_test)[::,1]
+fpr_nn, tpr_nn, _ =roc_curve(Y_test,  Y_pred_proba_nn)
+auc_nn = roc_auc_score(Y_test,Y_pred_proba_nn)
+
+```
+
+## Support Vector Machines (SVM)
+
+## K-Nearest Neighbors (KNN)
+
+
+Step III. Choosing the best model
+We can observe that the best performing model is the LDA baed on the accuracy. We will use this model to against the tet data set. We can visually compare the model performance plotting the auc as well.
+
+
+
+
+```
