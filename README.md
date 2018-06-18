@@ -206,9 +206,17 @@ auc_nn = roc_auc_score(Y_test,Y_pred_proba_nn)
 
 
 Step III. Choosing the best model
-We can observe that the best performing model is the LDA baed on the accuracy. We will use this model to against the tet data set. We can visually compare the model performance plotting the auc as well.
+We can observe that the best performing model is the NN baSed on the accuracy & auc. We will use this model to against the tet data set. We can visually compare the model performance plotting the auc as well.
 
-
+### ACCURACY
+```
+xgb	0.60809294
+LR	0.61164512
+LDA	0.611566047
+CART	0.614029979
+NB	0.500832189
+NN	0.616621313
+```
 ![alt text](https://github.com/shirllygu/python-model/blob/master/Screen%20Shot%202018-06-18%20at%204.17.11%20PM.png)
 
 ```
