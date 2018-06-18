@@ -252,7 +252,7 @@ CART	0.614029979
 NB	0.500832189
 NN	0.616621313
 ```
-### AUC COMPARISTON
+### AUC COMPARISTN
 
 ![alt text](https://github.com/shirllygu/python-model/blob/master/Screen%20Shot%202018-06-18%20at%204.17.11%20PM.png)
 
