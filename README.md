@@ -254,7 +254,8 @@ to be tested
 ```
 
 Step III. Choosing the best model
-We can observe that the best performing model is the NN baSed on the accuracy & auc. We will use this model to against the tet data set. We can visually compare the model performance plotting the auc as well.
+
+From the output below, we could tell that the best performing model is the NN based on the accuracy & auc. We will use this model to against the tet data set. We can visually compare the model performance plotting the auc as well.
 
 ### ACCURACY
 ```
