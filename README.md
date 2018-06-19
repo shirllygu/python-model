@@ -286,7 +286,7 @@ NB	0.500832189
 NN	0.616621313
 LSVM	0.611459983
 ```
-### AUC COMPARISTN
+### AUC COMPARISON
 ![alt text](https://github.com/shirllygu/python-model/blob/master/Screen%20Shot%202018-06-18%20at%206.34.42%20PM.png)
 
 
