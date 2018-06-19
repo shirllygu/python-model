@@ -69,7 +69,7 @@ from pandas.plotting import scatter_matrix
 We will load the and explore the data set.
 ```python
 
-os.chdir("S:\Global_DPA\yugu\cameo\NLD")
+os.chdir(" ")
 
 data = pd.read_csv('./usinterest.csv')
 pd.set_option('display.max_columns', 500)     # Make sure we can see all of the columns
