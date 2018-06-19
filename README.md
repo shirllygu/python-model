@@ -288,6 +288,6 @@ LSVM .    0.6114599833813233
 ```
 ### AUC COMPARISTN
 
-![alt text](https://github.com/shirllygu/python-model/blob/master/Screen%20Shot%202018-06-18%20at%204.17.11%20PM.png)
+![alt text](https://github.com/shirllygu/python-model/blob/master/Screen%20Shot%202018-06-18%20at%206.29.46%20PM.png)
 
 
