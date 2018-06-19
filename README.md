@@ -235,11 +235,29 @@ auc_nn = roc_auc_score(Y_test,Y_pred_proba_nn)
 
 ```
 
-## Support Vector Machines (SVM)
+## Linear Support Vector Machines (LSVM)
+
+```
+lsvm = LinearSVC()
+clf=CalibratedClassifierCV(lsvm)
+clf.fit(X_train,Y_train)
+predictions_lsvm = clf.predict(X_test)
+print("Linear SVC")
+print(accuracy_score(Y_test,predictions_lsvm))
+print(classification_report(Y_test, predictions_lsvm))
+Y_pred_proba_lsvm = clf.predict_proba(X_test)[::,1]
+fpr_lsvm, tpr_lsvm, _ =roc_curve(Y_test,  Y_pred_proba_lsvm)
+auc_lsvm = roc_auc_score(Y_test,Y_pred_proba_lsvm)
+
+```
+
+## Support Vector Machines (LSVM)
 
 ```
 to be tested
 ```
+
+
 
 ## K-Nearest Neighbors (KNN)
 
@@ -260,12 +278,13 @@ The output below shows the accuracy and auc plotting, we could tell that all mod
 
 ### ACCURACY
 ```
-xgb	0.60809294
+XGB	0.60809294
 LR	0.61164512
 LDA	0.611566047
 CART	0.614029979
 NB	0.500832189
 NN	0.616621313
+LSVM .    0.6114599833813233
 ```
 ### AUC COMPARISTN
 
