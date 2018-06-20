@@ -1,0 +1,101 @@
+
+```python
+
+# Compare Algorithms
+import pip
+import os
+import h5py
+import numpy as np
+import os
+import glob
+import pandas as pd   
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.model_selection import KFold, StratifiedKFold
+from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
+from sklearn.linear_model import LogisticRegression   
+from sklearn.linear_model import Lasso                         
+from sklearn.linear_model import ElasticNet 
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.ensemble import ExtraTreesClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neural_network import MLPClassifier
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+from xgboost import XGBClassifier
+from pandas.plotting import scatter_matrix
+from sklearn.externals import joblib
+# load dataset
+os.chdir("S:/Global_DPA/yugu/cameo/NLD")
+
+data0 = pd.read_csv('./usinterest.csv')
+data=data0.sample(100000)
+pd.set_option('display.max_columns', 500)     # Make sure we can see all of the columns
+pd.set_option('display.max_rows', 20)         # Keep the output on one page
+data.shape
+data.head()
+data.describe()
+
+X, Y = data.iloc[:,1:], data.iloc[:,0]
+print(data.describe())
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=7)
+# prepare configuration for cross validation test harness
+seed = 7
+num_trees = 100
+# prepare models
+models = []
+models.append(('LR', LogisticRegression(random_state=9)))
+models.append(('LDA', LinearDiscriminantAnalysis()))
+models.append(('NN', MLPClassifier()))
+models.append(('CART', DecisionTreeClassifier(random_state=9)))
+models.append(('NB', GaussianNB()))
+models.append(('SVM', SVC(random_state=9)))
+models.append(('KNN', KNeighborsClassifier(n_neighbors=5)))
+models.append(('XGB', XGBClassifier()))
+models.append(('GBM', GradientBoostingClassifier(n_estimators=num_trees, random_state=9)))
+models.append(('AB', AdaBoostClassifier(n_estimators=num_trees, random_state=9)))
+models.append(('ET', ExtraTreesClassifier(n_estimators=num_trees, random_state=9)))
+models.append(('RF', RandomForestClassifier(n_estimators=num_trees, random_state=9)))
+
+
+# evaluate each model in turn
+results = []
+names = []
+scoring = 'accuracy'
+for name, model in models:
+    kfold = KFold(n_splits=10, random_state=seed)
+    cv_results = cross_val_score(model, X, Y, cv=kfold, scoring=scoring)
+    results.append(cv_results)
+    names.append(name)
+    msg = "%s: %f (%f)" % (name, cv_results.mean(), cv_results.std())
+    print(msg)
+
+# boxplot algorithm comparison
+fig = plt.figure()
+fig.suptitle('Algorithm Comparison')
+ax = fig.add_subplot(111)
+plt.boxplot(results)
+ax.set_xticklabels(names)
+plt.show()
+
+ ```
+ ```
+LR: 0.610340 (0.003615)
+LDA: 0.610130 (0.003664)
+NN: 0.612340 (0.004752)
+CART: 0.597540 (0.004621)
+NB: 0.500470 (0.005118)
+SVM: 0.610270 (0.003870)
+KNN: 0.584280 (0.004728)
+XGB: 0.614310 (0.005198)
+GBM: 0.614280 (0.004950)
+AB: 0.610410 (0.003675)
+ET: 0.600850 (0.003933)
+```
+
+
+RF: 0.600880 (0.003566)
